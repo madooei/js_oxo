@@ -50,8 +50,11 @@
       const numCols = numRows;
       let board = new Array(numRows * numCols);
       let player = "X";
+      let numMarked = 0;
+      let gameEnded = false;
 
       function updateBoard(cell, id) {
+        if (gameEnded) return;
         if (isMarked(cell)) {
           alert("You must select an empty cell");
           return;
@@ -60,6 +63,13 @@
         board[id - 1] = player;
         if (isWinner(player)) {
           announceWinner(player);
+          gameEnded = true;
+          return;
+        }
+        numMarked++;
+        if (numMarked === numRows * numCols) {
+          announceDraw();
+          gameEnded = true;
           return;
         }
         player = switchPlayer();
@@ -129,6 +139,12 @@
           if (board[index] !== player) return false;
         }
         return true;
+      }
+
+      function announceDraw() {
+        let playerDOM = document.getElementById("player");
+        playerDOM.innerText = "Its a draw!" + "\nRefresh for a new game!";
+        alert("Its a draw!");
       }
 
       function announceWinner(player) {
