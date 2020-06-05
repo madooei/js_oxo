@@ -43,7 +43,12 @@
       </div>
     </div>
 
+    <div id="player"></div>
+
     <script>
+      let player = 0;
+      let playerDOM = document.getElementById("player");
+      playerDOM.innerText = `Player ${player}'s turn!`;
       function addMarker(cell, marker) {
         cell.innerText = marker;
       }
