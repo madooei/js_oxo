@@ -27,33 +27,31 @@
 
     <div>
       <div class="row">
-        <div onclick="addMarker(this, 1);"></div>
-        <div onclick="addMarker(this, 2);"></div>
-        <div onclick="addMarker(this, 3);"></div>
+        <div onclick="updateBoard(this, 1);"></div>
+        <div onclick="updateBoard(this, 2);"></div>
+        <div onclick="updateBoard(this, 3);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this, 4);"></div>
-        <div onclick="addMarker(this, 5);"></div>
-        <div onclick="addMarker(this, 6);"></div>
+        <div onclick="updateBoard(this, 4);"></div>
+        <div onclick="updateBoard(this, 5);"></div>
+        <div onclick="updateBoard(this, 6);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this, 7);"></div>
-        <div onclick="addMarker(this, 8);"></div>
-        <div onclick="addMarker(this, 9);"></div>
+        <div onclick="updateBoard(this, 7);"></div>
+        <div onclick="updateBoard(this, 8);"></div>
+        <div onclick="updateBoard(this, 9);"></div>
       </div>
     </div>
 
-    <div id="player"></div>
+    <div id="player">Cross's turn!</div>
 
     <script>
       const numRows = 3;
-      const numCols = 3;
+      const numCols = numRows;
       let board = new Array(numRows * numCols);
       let player = "X";
-      let playerDOM = document.getElementById("player");
-      updatePlayerDOM(player);
 
-      function addMarker(cell, id) {
+      function updateBoard(cell, id) {
         if (isMarked(cell)) {
           alert("You must select an empty cell");
           return;
@@ -64,7 +62,6 @@
           announceWinner(player);
           return;
         }
-        console.log(board);
         player = switchPlayer();
         updatePlayerDOM(player);
       }
@@ -136,6 +133,7 @@
 
       function announceWinner(player) {
         let playerName = player === "X" ? "Cross" : "Nought";
+        let playerDOM = document.getElementById("player");
         playerDOM.innerText =
           playerName + " won!" + "\nRefresh for a new game!";
         alert(playerName + " won!");
@@ -143,6 +141,7 @@
 
       function updatePlayerDOM(player) {
         let playerName = player === "X" ? "Cross" : "Nought";
+        let playerDOM = document.getElementById("player");
         playerDOM.innerText = playerName + "'s turn!";
       }
 
