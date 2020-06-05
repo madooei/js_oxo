@@ -136,7 +136,8 @@
 
       function announceWinner(player) {
         let playerName = player === "X" ? "Cross" : "Nought";
-        playerDOM.innerText = playerName + " won!";
+        playerDOM.innerText =
+          playerName + " won!" + "\nRefresh for a new game!";
         alert(playerName + " won!");
       }
 
