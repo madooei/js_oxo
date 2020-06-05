@@ -58,6 +58,10 @@
         }
         cell.innerText = player;
         board[id - 1] = player;
+        if (isWinner(player)) {
+          announceWinner(player);
+          return;
+        }
         console.log(board);
         player = switchPlayer();
         updatePlayerDOM(player);
@@ -65,6 +69,16 @@
 
       function isMarked(cell) {
         return cell.innerText;
+      }
+
+      function isWinner(player) {
+        return false;
+      }
+
+      function announceWinner(player) {
+        let playerName = player === "X" ? "Cross" : "Nought";
+        playerDOM.innerText = playerName + " won!";
+        alert(playerName + " won!");
       }
 
       function updatePlayerDOM(player) {
