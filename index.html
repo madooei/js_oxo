@@ -27,41 +27,42 @@
 
     <div>
       <div class="row">
-        <div onclick="addMarker(this,'x');"></div>
-        <div onclick="addMarker(this,'o');"></div>
-        <div onclick="addMarker(this,'x');"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this,'o');"></div>
-        <div onclick="addMarker(this,'x');"></div>
-        <div onclick="addMarker(this,'o');"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this,'x');"></div>
-        <div onclick="addMarker(this,'o');"></div>
-        <div onclick="addMarker(this,'x');"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this);"></div>
       </div>
     </div>
 
     <div id="player"></div>
 
     <script>
-      let player = 0;
+      let player = "X";
       let playerDOM = document.getElementById("player");
-      playerDOM.innerText = `Player ${player}'s turn!`;
+      updatePlayerDOM(player);
 
-      function addMarker(cell, marker) {
-        cell.innerText = marker;
+      function addMarker(cell) {
+        cell.innerText = player;
         player = switchPlayer();
-        playerDOM.innerText = `Player ${player}'s turn!`;
+        updatePlayerDOM(player);
+      }
+
+      function updatePlayerDOM(player) {
+        let playerName = player === "X" ? "Cross" : "Nought";
+        playerDOM.innerText = playerName + "'s turn!";
       }
 
       function switchPlayer() {
-        if (player == 0) {
-          return 1;
-        } else {
-          return 0;
-        }
+        return player === "X" ? "O" : "X";
       }
     </script>
   </body>
