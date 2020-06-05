@@ -51,9 +51,17 @@
       updatePlayerDOM(player);
 
       function addMarker(cell) {
+        if (isMarked(cell)) {
+          alert("You must select an empty cell");
+          return;
+        }
         cell.innerText = player;
         player = switchPlayer();
         updatePlayerDOM(player);
+      }
+
+      function isMarked(cell) {
+        return cell.innerText;
       }
 
       function updatePlayerDOM(player) {
