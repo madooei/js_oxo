@@ -111,7 +111,27 @@
       }
 
       function checkDiagonals(player) {
+        if (checkMajorDiagonal(player)) return true;
+        if (checkMinorDiagonal(player)) return true;
         return false;
+      }
+
+      function checkMajorDiagonal(player) {
+        for (let row = 0; row < numRows; row++) {
+          let col = row;
+          let index = row * numRows + col;
+          if (board[index] !== player) return false;
+        }
+        return true;
+      }
+
+      function checkMinorDiagonal(player) {
+        for (let row = 0; row < numRows; row++) {
+          let col = numCols - row - 1;
+          let index = row * numRows + col;
+          if (board[index] !== player) return false;
+        }
+        return true;
       }
 
       function announceWinner(player) {
