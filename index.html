@@ -24,22 +24,26 @@
 
     <div>
       <div class="row">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div onclick="addMarker(this,'x');"></div>
+        <div onclick="addMarker(this,'o');"></div>
+        <div onclick="addMarker(this,'x');"></div>
       </div>
       <div class="row">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div onclick="addMarker(this,'o');"></div>
+        <div onclick="addMarker(this,'x');"></div>
+        <div onclick="addMarker(this,'o');"></div>
       </div>
       <div class="row">
-        <div></div>
-        <div></div>
-        <div></div>
+        <div onclick="addMarker(this,'x');"></div>
+        <div onclick="addMarker(this,'o');"></div>
+        <div onclick="addMarker(this,'x');"></div>
       </div>
     </div>
 
-    <script src="src/index.js"></script>
+    <script>
+      function addMarker(cell, marker) {
+        cell.innerText = marker;
+      }
+    </script>
   </body>
 </html>
