@@ -27,35 +27,38 @@
 
     <div>
       <div class="row">
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this, 1);"></div>
+        <div onclick="addMarker(this, 2);"></div>
+        <div onclick="addMarker(this, 3);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this, 4);"></div>
+        <div onclick="addMarker(this, 5);"></div>
+        <div onclick="addMarker(this, 6);"></div>
       </div>
       <div class="row">
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
-        <div onclick="addMarker(this);"></div>
+        <div onclick="addMarker(this, 7);"></div>
+        <div onclick="addMarker(this, 8);"></div>
+        <div onclick="addMarker(this, 9);"></div>
       </div>
     </div>
 
     <div id="player"></div>
 
     <script>
+      let board = new Array(9); // 3x3 board
       let player = "X";
       let playerDOM = document.getElementById("player");
       updatePlayerDOM(player);
 
-      function addMarker(cell) {
+      function addMarker(cell, id) {
         if (isMarked(cell)) {
           alert("You must select an empty cell");
           return;
         }
         cell.innerText = player;
+        board[id - 1] = player;
+        console.log(board);
         player = switchPlayer();
         updatePlayerDOM(player);
       }
