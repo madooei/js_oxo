@@ -95,6 +95,25 @@
         return true;
       }
 
+      function checkColumns(player) {
+        for (let col = 0; col < numCols; col++) {
+          if (checkColumn(col, player)) return true;
+        }
+        return false;
+      }
+
+      function checkColumn(col, player) {
+        for (let row = 0; row < numRows; row++) {
+          let index = row * numRows + col;
+          if (board[index] !== player) return false;
+        }
+        return true;
+      }
+
+      function checkDiagonals(player) {
+        return false;
+      }
+
       function announceWinner(player) {
         let playerName = player === "X" ? "Cross" : "Nought";
         playerDOM.innerText = playerName + " won!";
