@@ -149,15 +149,14 @@
 
       function announceDraw() {
         let playerDOM = document.getElementById("player");
-        playerDOM.innerText = "Its a draw!" + "\nRefresh for a new game!";
+        playerDOM.innerText = "Its a draw!\nRefresh for a new game!";
         alert("Its a draw!");
       }
 
       function announceWinner(player) {
         let playerName = player === "X" ? "Cross" : "Nought";
         let playerDOM = document.getElementById("player");
-        playerDOM.innerText =
-          playerName + " won!" + "\nRefresh for a new game!";
+        playerDOM.innerText = playerName + " won!\nRefresh for a new game!";
         alert(playerName + " won!");
       }
 
