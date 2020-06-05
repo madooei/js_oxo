@@ -46,7 +46,9 @@
     <div id="player"></div>
 
     <script>
-      let board = new Array(9); // 3x3 board
+      const numRows = 3;
+      const numCols = 3;
+      let board = new Array(numRows * numCols);
       let player = "X";
       let playerDOM = document.getElementById("player");
       updatePlayerDOM(player);
@@ -72,7 +74,25 @@
       }
 
       function isWinner(player) {
+        if (checkRows(player)) return true;
+        if (checkColumns(player)) return true;
+        if (checkDiagonals(player)) return true;
         return false;
+      }
+
+      function checkRows(player) {
+        for (let row = 0; row < numRows; row++) {
+          if (checkRow(row, player)) return true;
+        }
+        return false;
+      }
+
+      function checkRow(row, player) {
+        for (let col = 0; col < numCols; col++) {
+          let index = row * numRows + col;
+          if (board[index] !== player) return false;
+        }
+        return true;
       }
 
       function announceWinner(player) {
