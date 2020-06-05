@@ -49,8 +49,19 @@
       let player = 0;
       let playerDOM = document.getElementById("player");
       playerDOM.innerText = `Player ${player}'s turn!`;
+
       function addMarker(cell, marker) {
         cell.innerText = marker;
+        player = switchPlayer();
+        playerDOM.innerText = `Player ${player}'s turn!`;
+      }
+
+      function switchPlayer() {
+        if (player == 0) {
+          return 1;
+        } else {
+          return 0;
+        }
       }
     </script>
   </body>
