@@ -61,19 +61,25 @@
         }
         cell.innerText = player;
         board[id - 1] = player;
+        numMarked++;
+        updateGameStatus();
+        if (!gameEnded) {
+          player = switchPlayer();
+          updatePlayerDOM(player);
+        }
+      }
+
+      function updateGameStatus() {
         if (isWinner(player)) {
           announceWinner(player);
           gameEnded = true;
           return;
         }
-        numMarked++;
         if (numMarked === numRows * numCols) {
           announceDraw();
           gameEnded = true;
           return;
         }
-        player = switchPlayer();
-        updatePlayerDOM(player);
       }
 
       function isMarked(cell) {
