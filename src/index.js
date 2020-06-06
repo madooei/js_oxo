@@ -5,10 +5,10 @@ let player = "X";
 let numMarked = 0;
 let gameEnded = false;
 
-window.updateBoard = function updateBoard(cell, id) {
+window.updateBoard = function(cell, id) {
   if (gameEnded) return;
   if (isMarked(cell)) {
-    alert("You must select an empty cell");
+    alert("You must select an empty cell on the board!");
     return;
   }
   cell.innerText = player;
@@ -25,12 +25,9 @@ function updateGameStatus() {
   if (isWinner(player)) {
     announceWinner(player);
     gameEnded = true;
-    return;
-  }
-  if (numMarked === numRows * numCols) {
-    announceDraw();
+  } else if (numMarked === numRows * numCols) {
+    makeAnnouncement("Its a draw!");
     gameEnded = true;
-    return;
   }
 }
 
@@ -99,17 +96,15 @@ function checkMinorDiagonal(player) {
   return true;
 }
 
-function announceDraw() {
-  let playerDOM = document.getElementById("player");
-  playerDOM.innerText = "Its a draw!\nRefresh for a new game!";
-  alert("Its a draw!");
-}
-
 function announceWinner(player) {
   let playerName = player === "X" ? "Cross" : "Nought";
+  makeAnnouncement(playerName + " won!");
+}
+
+function makeAnnouncement(message) {
   let playerDOM = document.getElementById("player");
-  playerDOM.innerText = playerName + " won!\nRefresh for a new game!";
-  alert(playerName + " won!");
+  playerDOM.innerText = message + "\nRefresh for a new game!";
+  alert(message);
 }
 
 function updatePlayerDOM(player) {
